@@ -40,6 +40,7 @@ namespace Uss
                 }
                 if (snake.Eat(food))
                 {
+                    users.plusScore();
                     _ = play.Natuke_Mangida("../../../eat.wav");
                     food = foodCreator.CreateFood();
                     food.Draw();
@@ -57,13 +58,13 @@ namespace Uss
                 }
             }
             store.AddUser(users);
-            WriteGameOver();
+            WriteGameOver(users);
             store.save();
             Console.ReadLine();
         }
 
 
-        static void WriteGameOver()
+        static void WriteGameOver(User users)
         {
             int xOffset = 25;
             int yOffset = 8;

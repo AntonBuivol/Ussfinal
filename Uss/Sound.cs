@@ -8,7 +8,7 @@ using NAudio.Wave;
 
 namespace Uss
 {
-    class sound
+    class Sound
     {
         public async Task Tagaplaanis_Mangida(string Path)
         {
