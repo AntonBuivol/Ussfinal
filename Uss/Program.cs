@@ -11,6 +11,11 @@ namespace Uss
         static void Main(string[] args)
         {
             Console.SetWindowSize(80, 25);
+            
+            Store store = new Store();
+            store.read();
+
+            User users = new User(Console.ReadLine());
 
             Walls walls = new Walls(80, 25);
             walls.Draw();
