@@ -19,6 +19,9 @@ namespace Uss
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
+            
+            Sound play = new Sound();
+            _ = play.Tagaplaanis_Mangida("../../../music.wav");
 
             FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
@@ -32,6 +35,7 @@ namespace Uss
                 }
                 if (snake.Eat(food))
                 {
+                    _ = play.Natuke_Mangida("../../../eat.wav");
                     food = foodCreator.CreateFood();
                     food.Draw();
                 }
@@ -47,7 +51,9 @@ namespace Uss
                     snake.HandleKey(key.Key);
                 }
             }
+            store.AddUser(users);
             WriteGameOver();
+            store.save();
             Console.ReadLine();
         }
 
@@ -60,9 +66,12 @@ namespace Uss
             Console.SetCursorPosition(xOffset, yOffset++);
             WriteText("============================", xOffset, yOffset++);
             WriteText("GAME   OVER", xOffset + 1, yOffset++);
+            WriteText(users.username+" " + users.score.ToString(), xOffset + 1, yOffset++);
             yOffset++;
             WriteText("ANTON BUIVOL", xOffset + 2, yOffset++);
             WriteText("============================", xOffset, yOffset++);
+            Sound over = new Sound();
+            _ = over.Natuke_Mangida("../../../game_over.wav");
         }
 
         static void WriteText(String text, int xOffset, int yOffset)
