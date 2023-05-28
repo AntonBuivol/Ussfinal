@@ -57,8 +57,8 @@ namespace Uss
                 {
                     string[] parts = line.Split(' ');
 
-                    string username = parts[0]; // Имя пользователя
-                    int score = int.Parse(parts[1]); // Преобразование счета в целое число
+                    string username = parts[0];
+                    int score = int.Parse(parts[1]); // Преобразование счета из string в int
 
                     //Console.WriteLine(line);
                     AddUser(new User(username, score));
