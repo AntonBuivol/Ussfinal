@@ -1,5 +1,4 @@
-asd 2
+asd 0
 qwe 1
-t 1
-y 2
-r 2
+t 4
+u 12

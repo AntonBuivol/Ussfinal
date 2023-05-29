@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office.CustomXsn;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,23 @@ namespace Uss
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize(80, 25);
+            Console.SetWindowSize(95, 25);
             
             Store store = new Store();
+
+            Console.WriteLine("Kõik mängijad ja nende viimane punktisumma: ");
+
             store.read();
+
+            Console.WriteLine("Kirjuta oma nimi: ");
 
             User users = new User(Console.ReadLine());
 
+            Console.Clear();
+
+
+
+            Console.ForegroundColor = ConsoleColor.Red;
             Walls walls = new Walls(80, 25);
             walls.Draw();
 
@@ -32,8 +43,16 @@ namespace Uss
             Point food = foodCreator.CreateFood();
             food.Draw();
 
+
+
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.SetCursorPosition(Console.WindowWidth - 15, 1);
+                Console.Write("Mängija: " + users.username);
+                Console.SetCursorPosition(Console.WindowWidth - 15, 5);
+                Console.Write("Skoor: " + users.score);
+
                 if (walls.IsHit(snake) || snake.IsHitTail())
                 {
                     break;
@@ -64,6 +83,7 @@ namespace Uss
         }
 
 
+
         static void WriteGameOver(User users)
         {
             int xOffset = 25;
@@ -72,9 +92,9 @@ namespace Uss
             Console.SetCursorPosition(xOffset, yOffset++);
             WriteText("============================", xOffset, yOffset++);
             WriteText("GAME   OVER", xOffset + 1, yOffset++);
-            WriteText(users.username+" " + users.score.ToString(), xOffset + 1, yOffset++);
+            WriteText("MÄNGIJA: " + users.username+ " SKOOR: " + users.score.ToString(), xOffset + 1, yOffset++);
             yOffset++;
-            WriteText("ANTON BUIVOL", xOffset + 2, yOffset++);
+            WriteText("CREATOR: ANTON BUIVOL", xOffset + 2, yOffset++);
             WriteText("============================", xOffset, yOffset++);
             Sound over = new Sound();
             _ = over.Natuke_Mangida("../../../game_over.wav");

@@ -12,6 +12,7 @@ namespace Uss
 
         public Snake(Point tail, int length, Direction _direction)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             direction = _direction;
             pList = new List<Point>();
             for (int i = 0; i < length; i++)

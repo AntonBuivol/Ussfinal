@@ -60,7 +60,7 @@ namespace Uss
                     string username = parts[0];
                     int score = int.Parse(parts[1]); // Преобразование счета из string в int
 
-                    //Console.WriteLine(line);
+                    Console.WriteLine(line);
                     AddUser(new User(username, score));
                 }
                 logins.Close();
