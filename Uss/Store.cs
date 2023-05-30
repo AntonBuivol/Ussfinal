@@ -59,8 +59,8 @@ namespace Uss
 
                     string username = parts[0];
                     int score = int.Parse(parts[1]); // Преобразование счета из string в int
-
-                    Console.WriteLine(line);
+                    
+                    //Console.WriteLine(line);
                     AddUser(new User(username, score));
                 }
                 logins.Close();
@@ -68,6 +68,16 @@ namespace Uss
             catch (Exception ex)
             {
                 Console.WriteLine("Viga failiga " + ex.Message);
+            }
+        }
+        public void SortUsers()
+        {
+            var sortedUsers = newusers.OrderByDescending(x => x.Value.score);
+            newusers = sortedUsers.ToDictionary(x => x.Key, y => y.Value);
+
+            foreach (KeyValuePair<string, User> keyValue in newusers)
+            {
+                Console.WriteLine(keyValue.Key + " " + keyValue.Value.score);
             }
         }
     }

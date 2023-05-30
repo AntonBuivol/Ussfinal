@@ -18,6 +18,7 @@ namespace Uss
             Console.WriteLine("Kõik mängijad ja nende viimane punktisumma: ");
 
             store.read();
+            store.SortUsers();
 
             Console.WriteLine("Kirjuta oma nimi: ");
 
@@ -43,7 +44,8 @@ namespace Uss
             Point food = foodCreator.CreateFood();
             food.Draw();
 
-
+            Speed speed = new Speed();
+            
 
             while (true)
             {
@@ -52,6 +54,8 @@ namespace Uss
                 Console.Write("Mängija: " + users.username);
                 Console.SetCursorPosition(Console.WindowWidth - 15, 5);
                 Console.Write("Skoor: " + users.score);
+                Console.SetCursorPosition(Console.WindowWidth - 15, 9);
+                Console.Write("Kiirus: " + speed.TXT);
 
                 if (walls.IsHit(snake) || snake.IsHitTail())
                 {
@@ -63,13 +67,19 @@ namespace Uss
                     _ = play.Natuke_Mangida("../../../eat.wav");
                     food = foodCreator.CreateFood();
                     food.Draw();
+                    if (users.score % 1 == 0)
+                    {
+                        speed.plusSpeed();
+                    }
+
                 }
                 else
                 {
                     snake.Move();
                 }
 
-                Thread.Sleep(100);
+                Thread.Sleep(speed.SpeedValue);
+
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey();
