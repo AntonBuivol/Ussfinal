@@ -109,6 +109,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Colors.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="FoodCreator.cs" />

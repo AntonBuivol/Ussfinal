@@ -13,6 +13,10 @@ namespace Uss
         {
             Console.SetWindowSize(95, 25);
             
+            Colors col = new Colors();
+            string color = col.ValiColor();
+            Console.ForegroundColor = color;
+
             Store store = new Store();
 
             Console.WriteLine("Kõik mängijad ja nende viimane punktisumma: ");
