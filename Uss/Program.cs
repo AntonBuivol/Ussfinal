@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
+
 namespace Uss
 {
     class Program
@@ -12,10 +13,9 @@ namespace Uss
         static void Main(string[] args)
         {
             Console.SetWindowSize(95, 25);
-            
+
             Colors col = new Colors();
             string color = col.ValiColor();
-            Console.ForegroundColor = color;
 
             Store store = new Store();
 
@@ -30,8 +30,6 @@ namespace Uss
 
             Console.Clear();
 
-
-
             Console.ForegroundColor = ConsoleColor.Red;
             Walls walls = new Walls(80, 25);
             walls.Draw();
@@ -44,6 +42,8 @@ namespace Uss
             Sound play = new Sound();
             _ = play.Tagaplaanis_Mangida("../../../music.wav");
 
+            Colors.SetColor(color);
+
             FoodCreator foodCreator = new FoodCreator(80, 25, '$');
             Point food = foodCreator.CreateFood();
             food.Draw();
@@ -53,7 +53,6 @@ namespace Uss
 
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
                 Console.SetCursorPosition(Console.WindowWidth - 15, 1);
                 Console.Write("Mängija: " + users.username);
                 Console.SetCursorPosition(Console.WindowWidth - 15, 5);
@@ -98,6 +97,7 @@ namespace Uss
 
 
 
+
         static void WriteGameOver(User users)
         {
             int xOffset = 25;
@@ -113,6 +113,8 @@ namespace Uss
             Sound over = new Sound();
             _ = over.Natuke_Mangida("../../../game_over.wav");
         }
+
+        
 
         static void WriteText(String text, int xOffset, int yOffset)
         {

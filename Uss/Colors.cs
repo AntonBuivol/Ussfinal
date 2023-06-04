@@ -54,5 +54,26 @@ namespace Uss
                 return ussColor;
             }
         }
+        public static void SetColor(string color)
+        {
+            switch (color) //swictch выражение которое позволяет выбирать различные пути выполнения кода в зависимости от значения выражения
+            {
+                case "White": // case - варианты каждый из которых содержит значение с которым будет сравниваться выражение
+                    Console.ForegroundColor = ConsoleColor.White;
+                    break;
+                case "Blue":
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    break;
+                case "Green":
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    break;
+                case "Yellow":
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+                default:
+                    Console.ForegroundColor = ConsoleColor.Green; // По умолчанию, если выбран неверный цвет
+                    break;
+            }
+        }
     }
 }
